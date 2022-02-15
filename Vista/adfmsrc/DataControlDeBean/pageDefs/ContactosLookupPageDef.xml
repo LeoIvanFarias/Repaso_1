@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ContactosLookupPageDef"
+                Package="DataControlDeBean.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="findContactsByName_name" IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator Binds="findContactsByName.result" DataControl="Agenda" RangeSize="25" BeanClass="acme.bean.Contacto"
+                    id="findContactsByNameIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findContactsByName" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findContactsByName" IsViewObjectMethod="false" DataControl="Agenda"
+                  InstanceName="data.Agenda.dataProvider"
+                  ReturnName="data.Agenda.methodResults.findContactsByName_Agenda_dataProvider_findContactsByName_result">
+      <NamedData NDName="name" NDType="java.lang.String" NDValue="${bindings.findContactsByName_name}"/>
+    </methodAction>
+    <tree IterBinding="findContactsByNameIterator" id="Contacto">
+      <nodeDefinition DefName="acme.bean.Contacto" Name="Contacto0">
+        <AttrNames>
+          <Item Value="nombre"/>
+          <Item Value="email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="variables" id="name">
+      <AttrNames>
+        <Item Value="findContactsByName_name"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

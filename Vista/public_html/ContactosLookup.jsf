@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="ContactosLookup.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:decorativeBox id="db1">
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl1" layout="scroll" inlineStyle="padding:5.0px">
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:inputText value="#{bindings.name.inputValue}" label="Ingrese parte del nombre:  "
+                                          required="#{bindings.name.hints.mandatory}"
+                                          columns="#{bindings.name.hints.displayWidth}"
+                                          maximumLength="#{bindings.name.hints.precision}"
+                                          shortDesc="#{bindings.name.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.name.validator}"/>
+                            </af:inputText>
+                            <af:button actionListener="#{bindings.findContactsByName.execute}" text="Buscar"
+                                       disabled="#{!bindings.findContactsByName.enabled}" id="b1"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <af:table value="#{bindings.Contacto.collectionModel}" var="row"
+                              rows="#{bindings.Contacto.rangeSize}"
+                              emptyText="#{bindings.Contacto.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" selectedRowKeys="#{bindings.Contacto.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.Contacto.collectionModel.makeCurrent}" rowSelection="single"
+                              fetchSize="#{bindings.Contacto.rangeSize}" id="t1">
+                        <af:column sortProperty="#{bindings.Contacto.hints.nombre.name}" sortable="true"
+                                   headerText="#{bindings.Contacto.hints.nombre.label}" id="c1" width="166">
+                            <af:outputText value="#{row.nombre}" shortDesc="#{bindings.Contacto.hints.nombre.tooltip}"
+                                           id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Contacto.hints.email.name}" sortable="true"
+                                   headerText="#{bindings.Contacto.hints.email.label}" id="c2" width="230">
+                            <af:outputText value="#{row.email}" shortDesc="#{bindings.Contacto.hints.email.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                    </af:table>
+                </f:facet>
+            </af:decorativeBox>
+        </af:form>
+    </af:document>
+</f:view>

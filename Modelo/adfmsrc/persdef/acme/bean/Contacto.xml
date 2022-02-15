@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Contacto"
+  Version="12.2.1.11.57">
+  <DesignTime>
+    <Attr Name="_DCName" Value="DataControlDeBean.DataControls.Agenda"/>
+    <Attr Name="_SDName" Value="acme.bean.Contacto"/>
+  </DesignTime>
+  <PDefAttribute
+    Name="email"
+    IsUpdateable="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="${adfBundle['DataControlDeBean.ModeloBundle']['acme.bean.Contacto.email_LABEL']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </PDefAttribute>
+  <PDefAttribute
+    Name="nombre"
+    IsUpdateable="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="${adfBundle['DataControlDeBean.ModeloBundle']['acme.bean.Contacto.nombre_LABEL']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </PDefAttribute>
+</PDefViewObject>

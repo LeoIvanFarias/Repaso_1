@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="ListadeContactos.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:table value="#{bindings.Contacto.collectionModel}" var="row"
+                              rows="#{bindings.Contacto.rangeSize}"
+                              emptyText="#{bindings.Contacto.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" fetchSize="#{bindings.Contacto.rangeSize}" id="t1">
+                        <af:column headerText="#{bindings.Contacto.hints.nombre.label}" id="c1" width="153">
+                            <af:outputText value="#{row.nombre}" shortDesc="#{bindings.Contacto.hints.nombre.tooltip}"
+                                           id="ot1"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.Contacto.hints.email.label}" id="c2" width="248">
+                            <af:outputText value="#{row.email}" shortDesc="#{bindings.Contacto.hints.email.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                    </af:table>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

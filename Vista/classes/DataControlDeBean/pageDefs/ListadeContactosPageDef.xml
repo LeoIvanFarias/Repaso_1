@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.57" id="ListadeContactosPageDef"
+                Package="DataControlDeBean.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findAllContacts.result" DataControl="Agenda" RangeSize="25" BeanClass="acme.bean.Contacto"
+                    id="findAllContactsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findAllContacts" RequiresUpdateModel="true" Action="invokeMethod" MethodName="findAllContacts"
+                  IsViewObjectMethod="false" DataControl="Agenda" InstanceName="data.Agenda.dataProvider"
+                  ReturnName="data.Agenda.methodResults.findAllContacts_Agenda_dataProvider_findAllContacts_result"/>
+    <tree IterBinding="findAllContactsIterator" id="Contacto">
+      <nodeDefinition DefName="acme.bean.Contacto" Name="Contacto0">
+        <AttrNames>
+          <Item Value="nombre"/>
+          <Item Value="email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
